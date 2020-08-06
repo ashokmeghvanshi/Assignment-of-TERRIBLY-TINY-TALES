@@ -13,6 +13,7 @@
       <h1>ASSIGNMENT OF TERRIBLY TINY TALES</h1>
    </header>
 
+
    <div class="enterinput">
      <label>Please Enter Any Number : </label>
      <input name="usernumber" type="text" placeholder="Enter Number" required autofocus>
@@ -21,7 +22,94 @@
    <div class="inputsubmit">
      <input type="submit" value="Submit">
    </div>
+   
+   <table class="table1">
+     <tr>
+       <th>Word</th>
+       <th>Frequecy</th>
+     </tr>
+     <tr>
+       <td>Alfreds Futterkiste</td>
+       <td>Maria Anders</td>
+     </tr> 
+   </table>
+
   
   <script src="js/scripts.js"></script>
+  <pre id="demo"></pre>
+  <br>
+  <pre id="demo1"></pre> 
+  
+  <script type="text/javascript"> 
+  
+  document.getElementById('inputfile').onchange = function(){
+
+  var file = this.files[0];
+
+  var reader = new FileReader();
+   var output = [];
+  reader.onload = function(progressEvent){
+    // Entire file
+    console.log(this.result);
+
+    // By lines
+    var lines = this.result.split('\n');
+
+     
+    for(var line = 0; line < lines.length; line++)
+      { 
+      var t=lines[line];
+      var f=t.split(/\s+/);
+
+
+      for(var l = 0; l < f.length; l++)
+      {
+      if (f[l].length === 0) 
+      {
+         continue; 
+      } 
+      else 
+      {
+      output.push(f[l]);
+      }
+      }
+
+      console.log(output);
+
+    }
+
+    var wordsMap = {};
+
+  for(var key = 0; key < output.length; key++)
+  {
+    if (wordsMap.hasOwnProperty(output[key])) 
+    {
+      wordsMap[output[key]]=wordsMap[output[key]]+1 ;
+    } 
+    else 
+    {
+      wordsMap[output[key]] = 1;
+    }
+  }
+
+    document.getElementById("demo").innerHTML = output;
+     var finalWordsArray = [];
+  finalWordsArray = Object.keys(wordsMap).map(function (key) {
+    return {name: key,
+      total: wordsMap[key]};
+  });
+
+  finalWordsArray.sort(function (a, b) {
+    return b.total - a.total;
+  });
+
+  console.log(finalWordsArray);
+
+  };
+  reader.readAsText(file);
+ 
+}; 
+
+  </script>
 </body>
 </html>
