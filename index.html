@@ -50,7 +50,7 @@
    var output = [];
   reader.onload = function(progressEvent){
     // Entire file
-    console.log(this.result);
+    //console.log(this.result);
 
     // By lines
     var lines = this.result.split('\n');
@@ -74,7 +74,7 @@
       }
       }
 
-      console.log(output);
+      //console.log(output);
 
     }
 
@@ -103,7 +103,14 @@
     return b.total - a.total;
   });
 
+  console.log('ASSIGNMENT');
   console.log(finalWordsArray);
+
+  for(var y = 0; y < 8; y++)
+  {
+    console.log(finalWordsArray[y]['name']+' '+finalWordsArray[y]['total'])
+    document.write('<tr><td>' + finalWordsArray[y]['name'] + '</td><td>' + finalWordsArray[y]['total'] + '</td></tr>');
+  }
 
   };
   reader.readAsText(file);
