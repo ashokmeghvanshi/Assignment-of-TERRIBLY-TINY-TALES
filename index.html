@@ -16,14 +16,18 @@
 
    <div class="enterinput">
      <label>Please Enter Any Number : </label>
-     <input name="usernumber" type="text" placeholder="Enter Number" required autofocus>
+     <input type="number" name="nt" id="nt" placeholder="Enter Number" required>
    </div>
-   
+  
+   <div class="inputfile">
+    <input type="file" name="inputfile" id="inputfile"> 
+   </div>
+
    <div class="inputsubmit">
-     <input type="submit" value="Submit">
+     <button onclick="find()">Submit</button>
    </div>
    
-   <table class="table1">
+   <!-- <table class="table1">
      <tr>
        <th>Word</th>
        <th>Frequecy</th>
@@ -33,17 +37,20 @@
        <td>Maria Anders</td>
      </tr> 
    </table>
-
+  -->
   
-  <script src="js/scripts.js"></script>
   <pre id="demo"></pre>
   <br>
   <pre id="demo1"></pre> 
   
   <script type="text/javascript"> 
-  
-  document.getElementById('inputfile').onchange = function(){
+function find() 
+{
+var a = document.getElementById('nt').value;
+var b = document.getElementById('inputfile').value;
 
+  document.getElementById('inputfile').onchange = function()
+  {
   var file = this.files[0];
 
   var reader = new FileReader();
@@ -106,17 +113,17 @@
   console.log('ASSIGNMENT');
   console.log(finalWordsArray);
 
-  for(var y = 0; y < 8; y++)
+  for(var y = 0; y <a; y++)
   {
     console.log(finalWordsArray[y]['name']+' '+finalWordsArray[y]['total'])
-    document.write('<tr><td>' + finalWordsArray[y]['name'] + '</td><td>' + finalWordsArray[y]['total'] + '</td></tr>');
+
   }
 
   };
   reader.readAsText(file);
  
 }; 
-
+}
   </script>
 </body>
 </html>

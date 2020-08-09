@@ -11,9 +11,14 @@
 	padding-top: 30px;
 }
 
-.inputsubmit{
-	text-align: center;
+.inputfile{
+  padding-left: 600px;
 	padding-top: 30px;
+}
+
+.inputsubmit{
+  text-align: center;
+  padding-top: 30px;
 }
 
 .table1{
